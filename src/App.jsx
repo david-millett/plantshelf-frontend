@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-
+import { getUser } from "../utils/auth";
 
 // * Components
 import NavBar from "./components/NavBar/NavBar";
@@ -13,13 +13,12 @@ import PlantShow from "./pages/PlantShow/PlantShow";
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
 
-
 const App = () => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(getUser())
 
   return (
     <>
-      <NavBar user={user} />
+      <NavBar user={user} setUser={setUser} />
       <Routes>
         <Route path="/plants" element={<PlantList />} />
         <Route path="/plants/:plantId" element={<PlantShow />} />

@@ -14,3 +14,15 @@ export const signup = async (formData) => {
 
     return data
 }
+
+export const signin = async (formData) => {
+    // Sign in a user
+    const { data } = await axios.post(`${BASE_URL}signin/`, formData)
+
+    // Set the token to local storage
+    if (data.token) {
+        setToken(data.token)
+    }
+
+    return data
+}
