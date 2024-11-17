@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/plants`
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/plants/`
 
 // * Index
 export const index = () => {
@@ -14,5 +14,5 @@ export const create = (formData) => {
 
 // * Show
 export const show = (plantId) => {
-    return axios.get(`${BASE_URL}/${plantId}`)
+    return axios.get(`${BASE_URL}${plantId}/`)
 }
