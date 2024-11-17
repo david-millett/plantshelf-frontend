@@ -12,6 +12,7 @@ import PlantList from "./pages/PlantList/PlantList";
 import PlantDetails from "./pages/PlantDetails/PlantDetails";
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
+import MyPlantDetails from "./pages/MyPlantDetails/MyPlantDetails";
 
 const App = () => {
   const [user, setUser] = useState(getUser())
@@ -23,7 +24,10 @@ const App = () => {
         <Route path="/plants" element={<PlantList />} />
         <Route path="/plants/:plantId" element={<PlantDetails />} />
         { user ? (
-          <Route path="/" element={<Dashboard />} />
+          <>
+            <Route path="/" element={<Dashboard user={user} />} />
+            <Route path="/my_plants/:myPlantId" element={<MyPlantDetails />} />
+          </>
         )
         : (
           <>
