@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
-import { removeToken } from "../../../utils/auth"
+import { removeToken } from "../../utils/auth"
+
+// Styles
 import styles from './NavBar.module.scss'
 
 const NavBar = ({ user, setUser }) => {

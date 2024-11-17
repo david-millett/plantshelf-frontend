@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { getUser } from "../utils/auth";
+import { getUser } from "./utils/auth";
 
 // * Components
 import NavBar from "./components/NavBar/NavBar";
@@ -9,7 +9,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Landing from "./pages/Landing/Landing";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import PlantList from "./pages/PlantList/PlantList";
-import PlantShow from "./pages/PlantShow/PlantShow";
+import PlantDetails from "./pages/PlantDetails/PlantDetails";
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
 
@@ -21,7 +21,7 @@ const App = () => {
       <NavBar user={user} setUser={setUser} />
       <Routes>
         <Route path="/plants" element={<PlantList />} />
-        <Route path="/plants/:plantId" element={<PlantShow />} />
+        <Route path="/plants/:plantId" element={<PlantDetails />} />
         { user ? (
           <Route path="/" element={<Dashboard />} />
         )

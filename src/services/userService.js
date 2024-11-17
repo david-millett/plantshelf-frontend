@@ -1,5 +1,5 @@
 import axios from "axios"
-import { setToken } from "../../utils/auth"
+import { setToken } from "../utils/auth"
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users/`
 
