@@ -39,6 +39,12 @@ if (errors) return <p className="error">{errors.errorMessage}</p>
 // Render loading message
 if (!myPlant) return <p>Loading...</p>
 
+// const today = new Date()
+// const lastWatered = Date.parse(myPlant.last_watered)
+// const nextWatering = lastWatered.getTime() - today.getTime()
+// console.log(today)
+// console.log(nextWatering)
+
     return (
         <main className={styles.container}>
 
