@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 
+// Mantine modal menu
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Button } from '@mantine/core';
+
 // Services
 import { show } from "../../services/plantService"
 
@@ -9,11 +13,13 @@ import styles from './PlantDetails.module.scss'
 
 // * Components
 import PlantInfo from "../../components/PlantInfo/PlantInfo"
+import MyPlantForm from "../../components/MyPlantForm/MyPlantForm";
 
 const PlantDetails = () => {
 
     const [plant, setPlant] = useState(null)
     const [errors, setErrors] = useState(null)
+    const [opened, { open, close }] = useDisclosure(false);
 
     // Location variables
     const { plantId } = useParams()
@@ -46,7 +52,19 @@ if (!plant) return <p>Loading...</p>
                 <div>
                     <h1>{plant.common_name}</h1>
                     <p className="species">{plant.genus} {plant.species}</p>
-                    <button>Add to shelf</button>
+                    
+
+                    <Modal opened={opened} onClose={close} title="Add to shelf">
+                        {<MyPlantForm plant={plant} />}
+                    </Modal>
+
+                    <Button onClick={open}>Add to shelf</Button>
+
+
+                    <Link to={`/plants/${plantId}/create`}>
+                        <button>Add to shelf</button>
+                    </Link>
+                
                 </div>
                 <img src="https://dummyimage.com/300/ffffff/fff.png" />
             </div>

@@ -13,6 +13,7 @@ import PlantDetails from "./pages/PlantDetails/PlantDetails";
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
 import MyPlantDetails from "./pages/MyPlantDetails/MyPlantDetails";
+// import MyPlantCreate from "./pages/MyPlantCreate/MyPlantCreate";
 
 const App = () => {
   const [user, setUser] = useState(getUser())
@@ -27,6 +28,7 @@ const App = () => {
           <>
             <Route path="/" element={<Dashboard user={user} />} />
             <Route path="/my_plants/:myPlantId" element={<MyPlantDetails />} />
+            {/* <Route path="/plants/:plantId/create" element={<MyPlantCreate />} /> */}
           </>
         )
         : (

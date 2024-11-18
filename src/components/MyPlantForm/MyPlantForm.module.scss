@@ -1,0 +1,12 @@
+.container {
+    color: black; //placeholder for editing
+    form {
+        label {
+            font-weight: bold;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
