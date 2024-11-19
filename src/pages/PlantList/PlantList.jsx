@@ -7,6 +7,15 @@ import { index } from "../../services/plantService"
 // Styles
 import styles from './PlantList.module.scss'
 
+// Icons
+import { IconSkull } from "@tabler/icons-react"
+import { IconSunLow } from "@tabler/icons-react"
+import { IconSunHigh } from "@tabler/icons-react"
+import { IconSun } from "@tabler/icons-react"
+import { IconCircleNumber1 } from "@tabler/icons-react"
+import { IconCircleNumber2 } from "@tabler/icons-react"
+import { IconCircleNumber3 } from "@tabler/icons-react"
+
 const PlantList = () => {
 
     const [plants, setPlants] = useState([])
@@ -40,9 +49,34 @@ const PlantList = () => {
                                         <p className="species">{plant.genus} {plant.species}</p>
                                     </div>
                                     <div className={styles.icons}>
-                                        <img src="https://dummyimage.com/35/ffffff/fff.png" />
-                                        <img src="https://dummyimage.com/35/ffffff/fff.png" />
-                                        <img src="https://dummyimage.com/35/ffffff/fff.png" />
+                                        {/* <img src="https://dummyimage.com/35/ffffff/fff.png" /> */}
+                                        {/* <img src="https://dummyimage.com/35/ffffff/fff.png" /> */}
+                                        {/* <img src="https://dummyimage.com/35/ffffff/fff.png" /> */}
+
+                                        { plant.difficulty === 'beginner' ? <IconCircleNumber1 size={35} />
+                                        : plant.difficulty === 'medium' ? <IconCircleNumber2 size={35} />
+                                        : <IconCircleNumber3 size={35} />
+                                        }
+
+                                        { plant.light === 'Low' || plant.light === 'Low to Moderate' || plant.light === 'Low to Medium' ? <IconSunLow size={35} color="#EEDE86" /> 
+                                        : plant.light === 'Moderate' || plant.light === 'Low to Bright' || plant.light === 'Indirect' ? <IconSun size={35} color="#F7B778" />
+                                        : <IconSunHigh size={35} color="#EE9286" />
+                                        }
+
+                                        { plant.is_toxic ? <IconSkull size={35} /> : ''}
+
+                                        {/* Low
+                                        Low to Moderate
+                                        Low to Medium
+
+                                        Moderate
+                                        Low to Bright
+                                        Indirect
+
+                                        Bright
+                                        Bright Indirect */}
+
+
                                     </div>
                                 </div>
                             </li>
