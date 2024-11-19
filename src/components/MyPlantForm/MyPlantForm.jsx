@@ -6,12 +6,14 @@ import styles from './MyPlantForm.module.scss'
 
 // Services
 import { create, show, update } from "../../services/myPlantService"
+import { index } from "../../services/locationService"
 
-const MyPlantForm = ({ close, fetchMyPlant }) => {
+const MyPlantForm = ({ close, fetchMyPlant, plant }) => {
 
     const { plantId } = useParams()
     const { myPlantId } = useParams()
 
+    
     // State
     const [formData, setFormData] = useState({
         nickname: '',
@@ -21,6 +23,8 @@ const MyPlantForm = ({ close, fetchMyPlant }) => {
         species: plantId
     })
 
+    const [locations, setLocations] = useState([])
+    
     // Location variables
     const navigate = useNavigate()
 
@@ -38,6 +42,18 @@ const MyPlantForm = ({ close, fetchMyPlant }) => {
         }
         if (myPlantId) fetchMyPlant()
     }, [myPlantId])
+
+    useEffect(() => {
+        const fetchLocations = async () => {
+            try {
+                const { data } = await index()
+                setLocations(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchLocations()
+    }, [])
 
     // Event handlers
     const handleChange = (e) => {
@@ -61,9 +77,10 @@ const MyPlantForm = ({ close, fetchMyPlant }) => {
         }
     }
 
+    console.log(locations)
+
     return (
         <main className={styles.container}>
-            {/* <h1>My {plant.common_name}</h1> */}
 
             <form onSubmit={handleSubmit}>
                 <div>
@@ -91,8 +108,13 @@ const MyPlantForm = ({ close, fetchMyPlant }) => {
                 <div>
                     <label htmlFor="location">Location:</label>
                     <select id="location" name="location" onChange={handleChange}>
-                        <option>{ myPlantId ? '-- select an option to change --' : '-- select an option --'}</option>
-                        <option value="1">Living Room</option>
+                        <option>{ myPlantId ? plant.location.name : '-- select an option --'}</option>
+                        {locations.map(location => {
+                            return (
+                                <option key={location.id} value={location.id}>{location.name}</option>
+                            )
+                        })}
+                        {/* <option value="1">Living Room</option>
                         <option value="2">Main Bedroom</option>
                         <option value="3">Bathroom</option>
                         <option value="4">Kitchen</option>
@@ -103,7 +125,7 @@ const MyPlantForm = ({ close, fetchMyPlant }) => {
                         <option value="9">Porch</option>
                         <option value="10">Dining Room</option>
                         <option value="11">Bedroom 2</option>
-                        <option value="12">Bedroom 3</option>
+                        <option value="12">Bedroom 3</option> */}
                     </select>
                 </div>
 

@@ -85,7 +85,7 @@ if (!myPlant) return <p>Loading...</p>
                 overlayProps={{backgroundOpacity: 0.55, blur: 2}}
                 centered
             >
-                {<MyPlantForm close={close} fetchMyPlant={fetchMyPlant} />}
+                {<MyPlantForm close={close} fetchMyPlant={fetchMyPlant} plant={myPlant} />}
             </Modal>
             <button onClick={open}>Edit</button>
 
