@@ -7,7 +7,7 @@ import styles from './MyPlantForm.module.scss'
 // Services
 import { create, show, update } from "../../services/myPlantService"
 
-const MyPlantForm = ({ close }) => {
+const MyPlantForm = ({ close, fetchMyPlant }) => {
 
     const { plantId } = useParams()
     const { myPlantId } = useParams()
@@ -23,7 +23,6 @@ const MyPlantForm = ({ close }) => {
 
     // Location variables
     const navigate = useNavigate()
-
 
     useEffect(() => {
         const fetchMyPlant = async () => {
@@ -52,6 +51,7 @@ const MyPlantForm = ({ close }) => {
             if (myPlantId) {
                 res = await update(myPlantId, formData)
                 close()
+                fetchMyPlant()
             } else {
                 res = await create(formData)
                 navigate(`/my_plants/${res.data.id}`)

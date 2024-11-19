@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 // Mantine modal menu
@@ -35,18 +35,19 @@ const MyPlantDetails = () => {
         }
     }
 
-    useEffect(() => {
-        const fetchMyPlant = async () => {
-            try {
-                const { data } = await show(myPlantId)
-                setMyPlant(data)
-            } catch (error) {
-                console.log(error.response.data)
-                setErrors(error.response.data)
-            }
+    const fetchMyPlant = useCallback(async () => {
+        try {
+            const { data } = await show(myPlantId)
+            setMyPlant(data)
+        } catch (error) {
+            console.log(error.response.data)
+            setErrors(error.response.data)
         }
-        fetchMyPlant()
     }, [myPlantId])
+
+    useEffect(() => {
+        fetchMyPlant()
+    }, [myPlantId, fetchMyPlant])
 
 console.log(myPlant)
 
@@ -84,7 +85,7 @@ if (!myPlant) return <p>Loading...</p>
                 overlayProps={{backgroundOpacity: 0.55, blur: 2}}
                 centered
             >
-                {<MyPlantForm close={close} />}
+                {<MyPlantForm close={close} fetchMyPlant={fetchMyPlant} />}
             </Modal>
             <button onClick={open}>Edit</button>
 
