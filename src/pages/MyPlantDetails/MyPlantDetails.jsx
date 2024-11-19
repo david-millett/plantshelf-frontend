@@ -49,19 +49,20 @@ const MyPlantDetails = () => {
         fetchMyPlant()
     }, [myPlantId, fetchMyPlant])
 
-console.log(myPlant)
+    console.log(myPlant)
 
-// Render error message
-if (errors) return <p className="error">{errors.errorMessage}</p>
+    // Render error message
+    if (errors) return <p className="error">{errors.errorMessage}</p>
 
-// Render loading message
-if (!myPlant) return <p>Loading...</p>
+    // Render loading message
+    if (!myPlant) return <p>Loading...</p>
 
-// const today = new Date()
-// const lastWatered = Date.parse(myPlant.last_watered)
-// const nextWatering = lastWatered.getTime() - today.getTime()
-// console.log(today)
-// console.log(nextWatering)
+    // Watering schedule
+    const today = new Date()
+    const lastWatered = new Date(myPlant.last_watered)
+    const difference = lastWatered.getTime() - today.getTime()
+    const differenceInDays = Math.round(difference / (1000 * 3600 * 24))
+    const nextWatering = differenceInDays + myPlant.species.water_interval
 
     return (
         <main className={styles.container}>
@@ -74,9 +75,11 @@ if (!myPlant) return <p>Loading...</p>
             <p><strong>Added: </strong>{myPlant.added_on}</p>
             
             <h2>Watering</h2>
-            <button>Mark as watered</button>
+            <form>
+                <button>Mark as watered</button>
+            </form>
             <p>Last watered: {myPlant.last_watered}</p>
-            <p>Next watering: Figure this out</p>
+            <p>Next watering: {nextWatering} days </p>
             
             <Modal
                 opened={opened}

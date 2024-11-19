@@ -21,8 +21,22 @@ const PlantInfo = ({ plant }) => {
             <div>
                 <div>
                     <IconDroplet size={35} />
-                    <h2>Watering schedule</h2>
-                    <p>Water once every {plant.water_interval} days.</p>
+                    <div>
+                        <h2>Watering schedule</h2>
+                        <p>Water once every {plant.water_interval} days.</p>
+                    </div>
+                </div>
+
+                <div>
+                    { plant.difficulty === 'beginner' ? <IconCircleNumber1 size={35} />
+                    : plant.difficulty === 'medium' ? <IconCircleNumber2 size={35} />
+                    : <IconCircleNumber3 size={35} />
+                    }
+                    <h2>Difficulty</h2>
+                    {plant.difficulty === "beginner" ? <p>This plant is easy to care for and undemanding, suitable for beginners.</p>
+                    : plant.difficulty === "medium" ? <p>This plant requires specific but manageable care, and is of medium difficulty.</p>
+                    : <p>This plant requires in-depth care and is most suitable for expert plant owners.</p>
+                    }
                 </div>
 
                 <div>
@@ -40,18 +54,6 @@ const PlantInfo = ({ plant }) => {
                     {plant.is_toxic
                     ? <p>Be careful! This plant is toxic if eaten by humans or animals.</p>
                     : <p>This plant is not toxic to humans or animals.</p>
-                    }
-                </div>
-
-                <div>
-                    { plant.difficulty === 'beginner' ? <IconCircleNumber1 size={35} />
-                    : plant.difficulty === 'medium' ? <IconCircleNumber2 size={35} />
-                    : <IconCircleNumber3 size={35} />
-                    }
-                    <h2>Difficulty</h2>
-                    {plant.difficulty === "beginner" ? <p>This plant is easy to care for and undemanding, suitable for beginners.</p>
-                    : plant.difficulty === "medium" ? <p>This plant requires specific but manageable care, and is of medium difficulty.</p>
-                    : <p>This plant requires in-depth care and is most suitable for expert plant owners.</p>
                     }
                 </div>
             </div>
