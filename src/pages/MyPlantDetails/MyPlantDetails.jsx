@@ -14,6 +14,7 @@ import styles from './MyPlantDetails.module.scss'
 // * Components
 import PlantInfo from "../../components/PlantInfo/PlantInfo"
 import MyPlantForm from "../../components/MyPlantForm/MyPlantForm";
+import Watering from "../../components/Watering/Watering";
 
 const MyPlantDetails = () => {
 
@@ -57,13 +58,6 @@ const MyPlantDetails = () => {
     // Render loading message
     if (!myPlant) return <p>Loading...</p>
 
-    // Watering schedule
-    const today = new Date()
-    const lastWatered = new Date(myPlant.last_watered)
-    const difference = lastWatered.getTime() - today.getTime()
-    const differenceInDays = Math.round(difference / (1000 * 3600 * 24))
-    const nextWatering = differenceInDays + myPlant.species.water_interval
-
     return (
         <main className={styles.container}>
 
@@ -73,13 +67,6 @@ const MyPlantDetails = () => {
             <p className="species">{myPlant.species.genus} {myPlant.species.species}</p>
             <p><strong>Location: </strong>{myPlant.location.name}</p>
             <p><strong>Added: </strong>{myPlant.added_on}</p>
-            
-            <h2>Watering</h2>
-            <form>
-                <button>Mark as watered</button>
-            </form>
-            <p>Last watered: {myPlant.last_watered}</p>
-            <p>Next watering: {nextWatering} days </p>
             
             <Modal
                 opened={opened}
@@ -93,6 +80,8 @@ const MyPlantDetails = () => {
             <button onClick={open}>Edit</button>
 
             <button onClick={handleDeleteMyPlant}>Delete</button>
+
+            <Watering myPlant={myPlant} fetchMyPlant={fetchMyPlant} />
 
             <h2>{myPlant.species.common_name} Information</h2>
             <PlantInfo plant={myPlant.species} />
