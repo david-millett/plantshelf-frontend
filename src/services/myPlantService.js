@@ -24,5 +24,8 @@ export const deleteMyPlant = (myPlantId) => {
 
 // * Update
 export const update = (myPlantId, formData) => {
+    // formData.species = formData.species.id
+    // formData.owner = formData.owner.id
+    // formData.location = formData.location.id
     return axios.put(`${BASE_URL}${myPlantId}/`, formData)
 }

@@ -1,25 +1,44 @@
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 
 // Styles
 import styles from './MyPlantForm.module.scss'
 
 // Services
-import { create } from "../../services/myPlantService"
+import { create, show, update } from "../../services/myPlantService"
 
-const MyPlantForm = ({ plant }) => {
+const MyPlantForm = ({ close }) => {
+
+    const { plantId } = useParams()
+    const { myPlantId } = useParams()
 
     // State
     const [formData, setFormData] = useState({
         nickname: '',
         height: '',
-        location: 1, // ! Need to do this properly
+        location: '',
         last_watered: '',
-        species: plant.id
+        species: plantId
     })
 
     // Location variables
     const navigate = useNavigate()
+
+
+    useEffect(() => {
+        const fetchMyPlant = async () => {
+            try {
+                const { data } = await show(myPlantId)
+                data.species = data.species.id
+                data.owner = data.owner.id
+                data.location = data.location.id
+                setFormData(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        if (myPlantId) fetchMyPlant()
+    }, [myPlantId])
 
     // Event handlers
     const handleChange = (e) => {
@@ -29,7 +48,14 @@ const MyPlantForm = ({ plant }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await create(formData)
+            let res
+            if (myPlantId) {
+                res = await update(myPlantId, formData)
+                close()
+            } else {
+                res = await create(formData)
+                navigate(`/my_plants/${res.data.id}`)
+            }
         } catch (error) {
             console.log(error)
         }
@@ -37,7 +63,7 @@ const MyPlantForm = ({ plant }) => {
 
     return (
         <main className={styles.container}>
-            {/* <h1>Create</h1> */}
+            {/* <h1>My {plant.common_name}</h1> */}
 
             <form onSubmit={handleSubmit}>
                 <div>
@@ -62,33 +88,24 @@ const MyPlantForm = ({ plant }) => {
                     />
                 </div>
 
-                {/* <div>
+                <div>
                     <label htmlFor="location">Location:</label>
-                    <input
-                        type="number"
-                        id="location"
-                        name="location"
-                        value={formData.location}
-                        onChange={handleChange}
-                    />
-                </div> */}
-
-                {/* <div>
-                    <label htmlFor="location">Location:</label>
-                    <select id="location" name="location">
-                        <option value="1">Test</option>
+                    <select id="location" name="location" onChange={handleChange}>
+                        <option>{ myPlantId ? '-- select an option to change --' : '-- select an option --'}</option>
+                        <option value="1">Living Room</option>
+                        <option value="2">Main Bedroom</option>
+                        <option value="3">Bathroom</option>
+                        <option value="4">Kitchen</option>
+                        <option value="5">Study</option>
+                        <option value="6">Hall</option>
+                        <option value="7">Landing</option>
+                        <option value="8">Conservatory</option>
+                        <option value="9">Porch</option>
+                        <option value="10">Dining Room</option>
+                        <option value="11">Bedroom 2</option>
+                        <option value="12">Bedroom 3</option>
                     </select>
-                </div> */}
-
-                {/* <fieldset>
-                    <legend>Location:</legend>
-                    <input type="radio" id="low" name="priceRange" value="¥" />
-                    <label htmlFor="low">Low</label>
-                    <input type="radio" id="mid" name="priceRange" value="¥¥" />
-                    <label htmlFor="mid">Mid</label>
-                    <input type="radio" id="high" name="priceRange" value="¥¥¥" />
-                    <label htmlFor="high">High</label>
-                </fieldset> */}
+                </div>
 
                 <div>
                     <label htmlFor="last_watered">Last watered</label>
@@ -101,7 +118,8 @@ const MyPlantForm = ({ plant }) => {
                     />
                 </div>
 
-                <button>Add</button>
+                <button>{ myPlantId ? 'Save' : 'Add'}</button>
+                <button onClick={close}>Cancel</button>
             </form>
         </main>
     )

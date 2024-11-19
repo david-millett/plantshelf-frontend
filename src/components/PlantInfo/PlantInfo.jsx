@@ -15,7 +15,7 @@ const PlantInfo = ({ plant }) => {
 
                 <div>
                     <h2>Light conditions</h2>
-                    <p>This plant likes {plant.light} light.</p>
+                    <p>This plant prefers {plant.light} light.</p>
                 </div>
 
                 <div>

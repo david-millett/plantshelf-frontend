@@ -1,22 +1,39 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+
+// Mantine modal menu
+import { useDisclosure } from '@mantine/hooks';
+import { Modal } from '@mantine/core';
 
 // Services
-import { show } from "../../services/myPlantService"
+import { deleteMyPlant, show } from "../../services/myPlantService"
 
 // Styles
 import styles from './MyPlantDetails.module.scss'
 
 // * Components
 import PlantInfo from "../../components/PlantInfo/PlantInfo"
+import MyPlantForm from "../../components/MyPlantForm/MyPlantForm";
 
 const MyPlantDetails = () => {
 
     const [myPlant, setMyPlant] = useState(null)
     const [errors, setErrors] = useState(null)
+    const [opened, { open, close }] = useDisclosure(false);
 
     // Location variables
     const { myPlantId } = useParams()
+    const navigate = useNavigate()
+
+    // Event handlers
+    const handleDeleteMyPlant = async () => {
+        try {
+            await deleteMyPlant(myPlantId)
+            navigate('/')
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     useEffect(() => {
         const fetchMyPlant = async () => {
@@ -60,8 +77,18 @@ if (!myPlant) return <p>Loading...</p>
             <p>Last watered: {myPlant.last_watered}</p>
             <p>Next watering: Figure this out</p>
             
-            <button>Update</button>
-            <button>Delete</button>
+            <Modal
+                opened={opened}
+                onClose={close}
+                title={`Edit ${myPlant.nickname}`}
+                overlayProps={{backgroundOpacity: 0.55, blur: 2}}
+                centered
+            >
+                {<MyPlantForm close={close} />}
+            </Modal>
+            <button onClick={open}>Edit</button>
+
+            <button onClick={handleDeleteMyPlant}>Delete</button>
 
             <h2>{myPlant.species.common_name} Information</h2>
             <PlantInfo plant={myPlant.species} />

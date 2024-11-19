@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom"
 
 // Mantine modal menu
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core';
+import { Modal } from '@mantine/core';
 
 // Services
 import { show } from "../../services/plantService"
@@ -54,16 +54,16 @@ if (!plant) return <p>Loading...</p>
                     <p className="species">{plant.genus} {plant.species}</p>
                     
 
-                    <Modal opened={opened} onClose={close} title="Add to shelf">
-                        {<MyPlantForm plant={plant} />}
+                    <Modal
+                        opened={opened}
+                        onClose={close}
+                        title={`Add new ${plant.common_name} to shelf`}
+                        overlayProps={{backgroundOpacity: 0.55, blur: 2}}
+                        centered
+                    >
+                        {<MyPlantForm close={close} />}
                     </Modal>
-
-                    <Button onClick={open}>Add to shelf</Button>
-
-
-                    <Link to={`/plants/${plantId}/create`}>
-                        <button>Add to shelf</button>
-                    </Link>
+                    <button onClick={open}>Add to shelf</button>
                 
                 </div>
                 <img src="https://dummyimage.com/300/ffffff/fff.png" />
