@@ -106,7 +106,7 @@ const MyPlantForm = ({ close, fetchMyPlant, plant }) => {
                 </div>
 
                 <div>
-                    <label htmlFor="location">Location:</label>
+                    <label htmlFor="location">Location</label>
                     <select id="location" name="location" onChange={handleChange}>
                         <option>{ myPlantId ? plant.location.name : '-- select an option --'}</option>
                         {locations.map(location => {
@@ -114,18 +114,6 @@ const MyPlantForm = ({ close, fetchMyPlant, plant }) => {
                                 <option key={location.id} value={location.id}>{location.name}</option>
                             )
                         })}
-                        {/* <option value="1">Living Room</option>
-                        <option value="2">Main Bedroom</option>
-                        <option value="3">Bathroom</option>
-                        <option value="4">Kitchen</option>
-                        <option value="5">Study</option>
-                        <option value="6">Hall</option>
-                        <option value="7">Landing</option>
-                        <option value="8">Conservatory</option>
-                        <option value="9">Porch</option>
-                        <option value="10">Dining Room</option>
-                        <option value="11">Bedroom 2</option>
-                        <option value="12">Bedroom 3</option> */}
                     </select>
                 </div>
 
@@ -142,6 +130,7 @@ const MyPlantForm = ({ close, fetchMyPlant, plant }) => {
 
                 <button>{ myPlantId ? 'Save' : 'Add'}</button>
                 <button onClick={close}>Cancel</button>
+
             </form>
         </main>
     )

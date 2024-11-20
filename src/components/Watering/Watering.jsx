@@ -12,8 +12,8 @@ const Watering = ({ myPlant, fetchMyPlant }) => {
     const today = new Date()
     const lastWatered = new Date(myPlant.last_watered)
     const difference = lastWatered.getTime() - today.getTime()
-    const differenceInDays = Math.round(difference / (1000 * 3600 * 24))
-    const nextWatering = differenceInDays + myPlant.species.water_interval + 1
+    const differenceInDays = Math.ceil(difference / (1000 * 3600 * 24))
+    const nextWatering = differenceInDays + myPlant.species.water_interval
     const nextWateringDate = new Date (lastWatered.getTime() + (myPlant.species.water_interval * 24 * 60 * 60 * 1000))
     console.log(nextWateringDate)
     console.log(nextWatering)
@@ -42,12 +42,12 @@ const Watering = ({ myPlant, fetchMyPlant }) => {
         <main className={styles.container}>
             <div>
                 <h2>Watering</h2>
-                <form onSubmit={handleSubmit}>
-                    <button disabled={differenceInDays + 1 === 0 ? true : false}>Mark as watered</button>
-                </form>
+                <button onClick={handleSubmit} disabled={differenceInDays === 0 ? true : false}>
+                    {differenceInDays === 0 ? 'Watered' : 'Water me'}
+                </button>
                 <p>Last watered: 
                     { !myPlant.last_watered ? "This plant hasn't been watered yet"
-                    : differenceInDays + 1 === 0 ? ' Today'
+                    : differenceInDays === 0 ? ' Today'
                     : ` ${myPlant.last_watered}`
                     }
                 </p>

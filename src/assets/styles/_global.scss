@@ -23,14 +23,16 @@ button {
     font-weight: 500;
     background-color: $buttons;
     cursor: pointer;
-    transition: border-color 0.25s;
+    transition: 0.25s;
 }
 button:hover {
-    border-color: #646cff;
+    // border-color: #646cff;
+    transform: scale(1.05);
 }
 button:focus,
 button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+    // outline: 4px auto -webkit-focus-ring-color;
+    opacity: 75%;
 }
 button:disabled {
     background-color: grey;
@@ -40,8 +42,25 @@ button:disabled {
     font-style: italic;
 }
 
-Modal {
-    color: black;
+.mantine-Modal-header {
+    background-color: $modal;
+    color: $background;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+.mantine-Modal-content {
+    background-color: $modal;
+}
+
+.mantine-Modal-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.mantine-Modal-close {
+    margin-right: 1.5rem;
 }
 
 

@@ -4,5 +4,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 100px; // or should I use erm or whatever it is, rather than pixels
+    margin-bottom: 80px; // or should I use erm or whatever it is, rather than pixels
+
+    button {
+        margin-top: 1rem;
+    }
 }
+

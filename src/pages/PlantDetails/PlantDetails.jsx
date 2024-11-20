@@ -53,11 +53,10 @@ if (!plant) return <p>Loading...</p>
                     <h1>{plant.common_name}</h1>
                     <p className="species">{plant.genus} {plant.species}</p>
                     
-
                     <Modal
                         opened={opened}
                         onClose={close}
-                        title={`Add new ${plant.common_name} to shelf`}
+                        title={`Add new ${plant.common_name}`}
                         overlayProps={{backgroundOpacity: 0.55, blur: 2}}
                         centered
                     >
