@@ -42,7 +42,7 @@ const PlantList = () => {
                     return (
                         <Link key={plant.id} to={`/plants/${plant.id}/`}>
                             <li>
-                                <img className={styles.mainImage} src="https://dummyimage.com/150/ffffff/fff.png" />
+                                <img className={styles.mainImage} src={plant.image} />
                                 <div className={styles.plantDetails}>
                                     <div>
                                         <h3>{plant.common_name}</h3>

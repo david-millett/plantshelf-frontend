@@ -12,7 +12,7 @@ const MyPlantList = ({ myPlants }) => {
                         <Link key={plant.id} to={`/my_plants/${plant.id}/`}>
                             <li>
                                 <h3>{plant.nickname}</h3>
-                                <img src="https://dummyimage.com/100/ffffff/fff.png" />
+                                <img src={plant.species.image} />
                             </li>
                         </Link>
                     )

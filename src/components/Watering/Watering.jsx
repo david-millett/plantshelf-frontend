@@ -4,6 +4,10 @@ import { patchUpdate } from "../../services/myPlantService"
 // Styles
 import styles from './Watering.module.scss'
 
+// Icons
+import { IconDroplet } from '@tabler/icons-react'
+import { IconDropletFilled } from "@tabler/icons-react"
+
 const Watering = ({ myPlant, fetchMyPlant }) => {
 
     const { myPlantId } = useParams()
@@ -42,9 +46,19 @@ const Watering = ({ myPlant, fetchMyPlant }) => {
         <main className={styles.container}>
             <div>
                 <h2>Watering</h2>
-                <button onClick={handleSubmit} disabled={differenceInDays === 0 ? true : false}>
-                    {differenceInDays === 0 ? 'Watered' : 'Water me'}
+                
+                {differenceInDays === 0
+                ? <button onClick={handleSubmit} disabled='true'>
+                    <IconDropletFilled size={15} />
+                    <p>Watered</p>
                 </button>
+                : <button onClick={handleSubmit}>
+                    <IconDroplet size={15} />
+                    <p>Water Me</p>
+                </button>
+                }
+
+                
                 <p>Last watered: 
                     { !myPlant.last_watered ? "This plant hasn't been watered yet"
                     : differenceInDays === 0 ? ' Today'

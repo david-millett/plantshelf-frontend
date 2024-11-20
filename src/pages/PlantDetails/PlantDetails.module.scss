@@ -1,4 +1,7 @@
 
+.container {
+    max-width: 800px;
+}
 
 .hero {
     display: flex;
@@ -8,6 +11,11 @@
 
     button {
         margin-top: 1rem;
+    }
+
+    img {
+        width: 300px;
+        height: 300px;
     }
 }
 

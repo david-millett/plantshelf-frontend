@@ -4,6 +4,10 @@ import { patchUpdate } from "../../services/myPlantService"
 // Styles
 import styles from './WaterToday.module.scss'
 
+// Icons
+import { IconDroplet } from '@tabler/icons-react'
+import { IconDropletFilled } from "@tabler/icons-react"
+
 const WaterToday = ({ myPlants, fetchMyPlants }) => {
 
     // Format the date
@@ -40,12 +44,25 @@ const WaterToday = ({ myPlants, fetchMyPlants }) => {
                             <li key={plant.id}>
                                 <Link to={`/my_plants/${plant.id}/`}>
                                     <h3>{plant.nickname}</h3>
-                                    <img src="https://dummyimage.com/120/ffffff/fff.png" />
+                                    <img src={plant.species.image} />
                                 </Link>
                                 <p>{plant.location.name}</p>
-                                <button id={plant.id} onClick={handleSubmit} disabled={differenceInDays === 0 ? true : false}>
-                                    {differenceInDays === 0 ? 'Watered' : 'Water me'}
+
+
+                                {differenceInDays === 0
+                                ? <button id={plant.id} onClick={handleSubmit} disabled='true'>
+                                    <IconDropletFilled size={15}/>
+                                    <p id={plant.id}>Watered</p>
                                 </button>
+                                : <button id={plant.id} onClick={handleSubmit}>
+                                    <IconDroplet size={15}/>
+                                    <p id={plant.id}>Water me</p>
+                                </button>
+                                }
+
+                                
+
+
                                 <p>
                                     {nextWatering === -1 ? ` ${nextWatering * -1} day overdue`
                                     : nextWatering < -1 ? ` ${nextWatering * -1} days overdue`

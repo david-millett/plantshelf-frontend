@@ -65,7 +65,7 @@ if (!plant) return <p>Loading...</p>
                     <button onClick={open}>Add to shelf</button>
                 
                 </div>
-                <img src="https://dummyimage.com/300/ffffff/fff.png" />
+                <img src={plant.image} />
             </div>
 
             <PlantInfo plant={plant} />

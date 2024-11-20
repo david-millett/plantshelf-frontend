@@ -5,4 +5,10 @@
         margin: 10px;
         background-color: $background-dark;
     }
+
+    button {
+        display: flex;
+        gap: 0.3rem;
+        align-items: center;
+    }
 }

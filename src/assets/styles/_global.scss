@@ -37,6 +37,9 @@ button:focus-visible {
 button:disabled {
     background-color: grey;
 }
+button:disabled:hover {
+    transform: scale(1);
+}
 
 .species {
     font-style: italic;
