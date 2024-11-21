@@ -4,10 +4,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0 3rem 0;
+    margin: 0 0 1rem 0;
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
+    z-index: 10;
     background-color: $background;
 }
 
@@ -20,5 +21,13 @@
 
 .menuBlock {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
+}
+
+@media(max-width:425px){
+    .container {
+        a {
+            font-size: 0.8rem;
+        }
+    }
 }

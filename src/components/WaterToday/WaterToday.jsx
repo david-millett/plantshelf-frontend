@@ -55,7 +55,7 @@ const WaterToday = ({ myPlants, fetchMyPlants }) => {
                                 <p>{plant.location.name}</p>
 
                                 {differenceInDays === 0
-                                ? <button id={plant.id} onClick={handleSubmit} disabled='true'>
+                                ? <button id={plant.id} onClick={handleSubmit} disabled={true}>
                                     <IconDropletFilled size={15}/>
                                     <p id={plant.id}>Watered</p>
                                 </button>

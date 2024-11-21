@@ -47,13 +47,15 @@ const Watering = ({ myPlant, fetchMyPlant }) => {
                 <div>
                     <h2 className={styles.waterInfo}>Watering</h2>
                     
-                    <p className={styles.waterInfo}>Last watered: 
+                    <p><strong>Last watered:</strong></p>
+                    <p className={styles.waterInfo}> 
                         { !myPlant.last_watered ? "This plant hasn't been watered yet"
                         : differenceInDays === 0 ? ' Today'
                         : ` ${myPlant.last_watered}`
                     }
                     </p>
-                    <p className={styles.waterInfo}>Next watering: 
+                    <p><strong>Next watering:</strong></p>
+                    <p className={styles.waterInfo}>
                         { nextWatering === 0 ? ' Today!'
                         : nextWatering === -1 ? ` Overdue by ${nextWatering * -1} day!`
                         : nextWatering < 0 ? ` Overdue by ${nextWatering * -1} days!`

@@ -7,18 +7,16 @@ import styles from './NavBar.module.scss'
 // Icons
 import { IconPlant } from "@tabler/icons-react"
 
-// Burger menu
-// import { useDisclosure } from "@mantine/hooks"
-// import { Burger } from "@mantine/core"
+// Components
+import SignUpPopUp from "../SignUpPopUp/SignUpPopUp";
+import SignInPopUp from "../SignInPopUp/SignInPopUp";
 
 const NavBar = ({ user, setUser }) => {
 
-    // const [opened, { toggle }] = useDisclosure()
-
     const navigate = useNavigate()
 
-    const handleSignOut = () => {
-        removeToken()
+    const handleSignOut = async () => {
+        await removeToken()
         setUser(null)
         navigate('/')
     }
@@ -32,18 +30,16 @@ const NavBar = ({ user, setUser }) => {
                 </li>
             </Link>
 
-            {/* <Burger opened={opened} onClick={toggle} aria-label="Toggle navigation" /> */}
-
             <div className={styles.menuBlock}>
-            <li><Link to="/plants">Plants</Link></li>
-            { user ?
-                <li><Link to="" onClick={handleSignOut}>Sign out</Link></li>
-                :
-                <>
-                    <li><Link to="/signup">Sign up</Link></li>
-                    <li><Link to="/signin">Sign in</Link></li>
-                </>
-            }
+                <li><Link to="/plants">Plants</Link></li>
+                { user ?
+                    <Link onClick={handleSignOut}>Sign out</Link>
+                    :
+                    <>
+                        <SignUpPopUp setUser={setUser} />
+                        <SignInPopUp setUser={setUser} />
+                    </>
+                }
             </div>
         </ul>
     )

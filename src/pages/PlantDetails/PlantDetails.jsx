@@ -61,7 +61,7 @@ if (!plant) return <Loading />
                     >
                         {<MyPlantForm close={close} />}
                     </Modal>
-                    <button onClick={open} disabled={user ? false : true}>Add to shelf</button>
+                    <button onClick={open} disabled={user ? false : true}>{user ? 'Add to shelf' : 'Sign in to add'}</button>
                 
                 </div>
                 <img src={plant.image} alt={plant.common_name} />

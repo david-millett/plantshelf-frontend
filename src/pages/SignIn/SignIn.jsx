@@ -2,7 +2,10 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { signin } from "../../services/userService"
 
-const SignIn = ({ setUser }) => {
+// Styling
+import styles from '../../components/MyPlantForm/MyPlantForm.module.scss'
+
+const SignIn = ({ setUser, close }) => {
 
     // State
     const [formData, setFormData] = useState({
@@ -23,6 +26,7 @@ const SignIn = ({ setUser }) => {
         try {
             const { user } = await signin(formData) // sign in
             setUser(user) // set user to state
+            close()
             navigate('/') // navigate to dashboard
         } catch (error) {
             console.log(error)
@@ -30,8 +34,8 @@ const SignIn = ({ setUser }) => {
     }
 
     return (
-        <main>
-            <h1>Sign in</h1>
+        <main className={styles.container}>
+            {/* <h1>Sign in</h1> */}
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username or Email:</label>
@@ -53,12 +57,10 @@ const SignIn = ({ setUser }) => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <button>Sign In</button>
-                    <Link to="/">
-                        <button>Cancel</button>
-                    </Link>
-                </div>
+                <button>Sign in</button>
+                <Link to="/">
+                    <button>Cancel</button>
+                </Link>
             </form>
         </main>
     )

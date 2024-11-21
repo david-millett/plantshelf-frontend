@@ -30,8 +30,7 @@ const Dashboard = () => {
 
     return (
         <main className={styles.container}>
-            <h1>Welcome back!</h1>
-            {/* <img src="https://res.cloudinary.com/dpypzuxf5/image/upload/v1732118476/spiderplant_qzowx6.png" /> */}
+            <h1>Welcome!</h1>
             <h2 className={styles.header}>Water today</h2>
             <WaterToday myPlants={myPlants} fetchMyPlants={fetchMyPlants} />
             <div className={styles.header}>

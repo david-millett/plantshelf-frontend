@@ -51,17 +51,17 @@ const PlantList = () => {
                                     </div>
                                     <div className={styles.icons}>
 
-                                        { plant.difficulty === 'beginner' ? <IconCircleNumber1 size={30} />
-                                        : plant.difficulty === 'medium' ? <IconCircleNumber2 size={30} />
-                                        : <IconCircleNumber3 size={30} />
+                                        { plant.difficulty === 'beginner' ? <IconCircleNumber1 size={25} />
+                                        : plant.difficulty === 'medium' ? <IconCircleNumber2 size={25} />
+                                        : <IconCircleNumber3 size={25} />
                                         }
 
-                                        { plant.light === 'Low' || plant.light === 'Low to Moderate' || plant.light === 'Low to Medium' ? <IconSunLow size={30} color="#EEDE86" /> 
-                                        : plant.light === 'Moderate' || plant.light === 'Low to Bright' || plant.light === 'Indirect' ? <IconSun size={30} color="#F7B778" />
-                                        : <IconSunHigh size={30} color="#EE9286" />
+                                        { plant.light === 'Low' || plant.light === 'Low to Moderate' || plant.light === 'Low to Medium' ? <IconSunLow size={25} color="#EEDE86" /> 
+                                        : plant.light === 'Moderate' || plant.light === 'Low to Bright' || plant.light === 'Indirect' ? <IconSun size={25} color="#F7B778" />
+                                        : <IconSunHigh size={25} color="#EE9286" />
                                         }
 
-                                        { plant.is_toxic ? <IconSkull size={30} /> : ''}
+                                        { plant.is_toxic ? <IconSkull size={25} /> : ''}
 
                                     </div>
                                 </div>
