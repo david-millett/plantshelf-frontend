@@ -38,7 +38,7 @@
 }
 
 .shelfFloor {
-    height: 1.3rem;
+    height: 9px;
     background-color: $light-brown;
 }
 
@@ -52,4 +52,9 @@
     height: 0.4rem;
     width: 372px;
     background-color: $dark-brown;
+}
+
+.shelfFloorShadow {
+    height: 0.4rem;
+    background-color: $lighter-brown;
 }

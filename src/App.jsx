@@ -23,7 +23,7 @@ const App = () => {
       <NavBar user={user} setUser={setUser} />
       <Routes>
         <Route path="/plants" element={<PlantList />} />
-        <Route path="/plants/:plantId" element={<PlantDetails />} />
+        <Route path="/plants/:plantId" element={<PlantDetails user={user} />} />
         { user ? (
           <>
             <Route path="/" element={<Dashboard user={user} />} />

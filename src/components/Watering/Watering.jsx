@@ -19,10 +19,6 @@ const Watering = ({ myPlant, fetchMyPlant }) => {
     const difference = lastWatered.getTime() - today.getTime()
     const differenceInDays = Math.ceil(difference / (1000 * 3600 * 24))
     const nextWatering = differenceInDays + myPlant.species.water_interval
-    const nextWateringDate = new Date (lastWatered.getTime() + (myPlant.species.water_interval * 24 * 60 * 60 * 1000))
-    console.log(nextWateringDate)
-    console.log(nextWatering)
-    console.log(differenceInDays)
 
     // Format the date
     let dd = today.getDate()

@@ -8,8 +8,6 @@ import EmptyShelf from "../EmptyShelf/EmptyShelf"
 
 const MyPlantList = ({ myPlants }) => {
 
-    console.log(myPlants.length % 3)
-
     return (
         <main className={styles.container}>
             <ul>
@@ -24,7 +22,7 @@ const MyPlantList = ({ myPlants }) => {
                                 <div className={styles.shelfShadow}></div>
                                 <h3>{plant.nickname}</h3>
                                 <img src={plant.species.image} />
-                                {/* <div className={styles.shelfShadow}></div> */}
+                                <div className={styles.shelfFloorShadow}></div>
                                 <div className={styles.shelfFloor}></div>
                             </li>
                         </Link>
@@ -38,6 +36,7 @@ const MyPlantList = ({ myPlants }) => {
                 {myPlants.length < 4 ? <><EmptyShelf /><EmptyShelf/><EmptyShelf/><EmptyShelf /><EmptyShelf/><EmptyShelf/></> 
                 : myPlants.length < 7 ? <><EmptyShelf /><EmptyShelf/><EmptyShelf/></>
                 : ''}
+                <div className={styles.shelfTop}></div>
             </ul>
         </main>
     )

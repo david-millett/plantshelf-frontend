@@ -11,6 +11,12 @@ body {
     color: $font;
 }
 
+h1 {
+    font-family: 'Lato';
+    color: $modal;
+    font-size: 2.5rem;
+}
+
 li {
     list-style: none;
 }

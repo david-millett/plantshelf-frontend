@@ -15,6 +15,8 @@ import { IconSun } from "@tabler/icons-react"
 import { IconCircleNumber1 } from "@tabler/icons-react"
 import { IconCircleNumber2 } from "@tabler/icons-react"
 import { IconCircleNumber3 } from "@tabler/icons-react"
+
+// Components
 import Loading from "../../components/Loading/Loading"
 
 const PlantList = () => {
@@ -32,8 +34,6 @@ const PlantList = () => {
         }
         fetchPlants()
     }, [])
-
-    console.log(plants)
 
     return (
         <main className={styles.container}>

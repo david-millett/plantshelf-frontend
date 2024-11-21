@@ -1,11 +1,16 @@
+@use 'src/assets/styles/variables' as *;
+
 .container {
     text-align: center;
+    background-color: $background-dark;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
 
     ul {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
-        margin-bottom: 3rem;
         justify-content: center;
     }
 

@@ -77,8 +77,6 @@ const MyPlantForm = ({ close, fetchMyPlant, plant }) => {
         }
     }
 
-    console.log(locations)
-
     return (
         <main className={styles.container}>
 

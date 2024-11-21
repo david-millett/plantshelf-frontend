@@ -16,7 +16,7 @@ import PlantInfo from "../../components/PlantInfo/PlantInfo"
 import MyPlantForm from "../../components/MyPlantForm/MyPlantForm";
 import Loading from "../../components/Loading/Loading";
 
-const PlantDetails = () => {
+const PlantDetails = ({ user }) => {
 
     const [plant, setPlant] = useState(null)
     const [errors, setErrors] = useState(null)
@@ -61,7 +61,7 @@ if (!plant) return <Loading />
                     >
                         {<MyPlantForm close={close} />}
                     </Modal>
-                    <button onClick={open}>Add to shelf</button>
+                    <button onClick={open} disabled={user ? false : true}>Add to shelf</button>
                 
                 </div>
                 <img src={plant.image} alt={plant.common_name} />

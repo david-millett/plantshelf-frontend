@@ -13,7 +13,12 @@
 }
 
 .emptyShelfFloor {
-    height: 1.3rem;
+    height: 9px;
     width: 124px;
     background-color: $light-brown;
+}
+
+.emptyShelfFloorShadow {
+    height: 0.4rem;
+    background-color: $lighter-brown;
 }

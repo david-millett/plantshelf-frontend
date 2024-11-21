@@ -37,7 +37,7 @@ const NavBar = ({ user, setUser }) => {
             <div className={styles.menuBlock}>
             <li><Link to="/plants">Plants</Link></li>
             { user ?
-                <li><Link to="" onClick={handleSignOut}>Sign Out</Link></li>
+                <li><Link to="" onClick={handleSignOut}>Sign out</Link></li>
                 :
                 <>
                     <li><Link to="/signup">Sign up</Link></li>
