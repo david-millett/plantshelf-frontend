@@ -1,10 +1,12 @@
 .container {
+    text-align: center;
+
     ul {
         display: flex;
         flex-wrap: wrap;
-        // justify-content: space-around;
         gap: 1rem;
         margin-bottom: 3rem;
+        justify-content: center;
     }
 
     img {
@@ -17,4 +19,8 @@
         gap: 0.3rem;
         align-items: center;
     }
+}
+
+.nothing {
+    margin: 2rem;
 }

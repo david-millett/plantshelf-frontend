@@ -15,6 +15,7 @@ import styles from './MyPlantDetails.module.scss'
 import PlantInfo from "../../components/PlantInfo/PlantInfo"
 import MyPlantForm from "../../components/MyPlantForm/MyPlantForm";
 import Watering from "../../components/Watering/Watering";
+import Loading from "../../components/Loading/Loading";
 
 const MyPlantDetails = () => {
 
@@ -56,7 +57,7 @@ const MyPlantDetails = () => {
     if (errors) return <p className="error">{errors.errorMessage}</p>
 
     // Render loading message
-    if (!myPlant) return <p>Loading...</p>
+    if (!myPlant) return <Loading />
 
     return (
         <main className={styles.container}>

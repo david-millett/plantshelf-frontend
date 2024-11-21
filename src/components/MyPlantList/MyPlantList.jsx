@@ -14,16 +14,17 @@ const MyPlantList = ({ myPlants }) => {
         <main className={styles.container}>
             <ul>
                 <li>
-                    <div className={styles.shelfTopShadow}></div>
+                    {/* <div className={styles.shelfTopShadow}></div> */}
                     <div className={styles.shelfTop}></div>
                 </li>
                 {myPlants.map(plant => {
                     return (
                         <Link key={plant.id} to={`/my_plants/${plant.id}/`}>
                             <li>
+                                <div className={styles.shelfShadow}></div>
                                 <h3>{plant.nickname}</h3>
                                 <img src={plant.species.image} />
-                                <div className={styles.shelfShadow}></div>
+                                {/* <div className={styles.shelfShadow}></div> */}
                                 <div className={styles.shelfFloor}></div>
                             </li>
                         </Link>
@@ -34,6 +35,9 @@ const MyPlantList = ({ myPlants }) => {
                 : myPlants.length === 0 ? <><EmptyShelf /><EmptyShelf/><EmptyShelf/></>
                 : ''
                 }
+                {myPlants.length < 4 ? <><EmptyShelf /><EmptyShelf/><EmptyShelf/><EmptyShelf /><EmptyShelf/><EmptyShelf/></> 
+                : myPlants.length < 7 ? <><EmptyShelf /><EmptyShelf/><EmptyShelf/></>
+                : ''}
             </ul>
         </main>
     )

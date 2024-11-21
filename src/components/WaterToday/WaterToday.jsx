@@ -4,6 +4,9 @@ import { patchUpdate } from "../../services/myPlantService"
 // Styles
 import styles from './WaterToday.module.scss'
 
+// Components
+import Loading from "../Loading/Loading"
+
 // Icons
 import { IconDroplet } from '@tabler/icons-react'
 import { IconDropletFilled } from "@tabler/icons-react"
@@ -30,6 +33,8 @@ const WaterToday = ({ myPlants, fetchMyPlants }) => {
             console.log(error)
         }
     }
+    
+    let total = 0
         
     return (
         <main className={styles.container}>
@@ -40,6 +45,7 @@ const WaterToday = ({ myPlants, fetchMyPlants }) => {
                     const differenceInDays = Math.ceil(difference / (1000 * 3600 * 24))
                     const nextWatering = differenceInDays + plant.species.water_interval
                     if (nextWatering < 1 || differenceInDays === 0) {
+                        total = total + 1
                         return (
                             <li key={plant.id}>
                                 <Link to={`/my_plants/${plant.id}/`}>
@@ -47,7 +53,6 @@ const WaterToday = ({ myPlants, fetchMyPlants }) => {
                                     <img src={plant.species.image} alt={plant.species.common_name} />
                                 </Link>
                                 <p>{plant.location.name}</p>
-
 
                                 {differenceInDays === 0
                                 ? <button id={plant.id} onClick={handleSubmit} disabled='true'>
@@ -59,10 +64,6 @@ const WaterToday = ({ myPlants, fetchMyPlants }) => {
                                     <p id={plant.id}>Water me</p>
                                 </button>
                                 }
-
-                                
-
-
                                 <p>
                                     {nextWatering === -1 ? ` ${nextWatering * -1} day overdue`
                                     : nextWatering < -1 ? ` ${nextWatering * -1} days overdue`
@@ -73,6 +74,10 @@ const WaterToday = ({ myPlants, fetchMyPlants }) => {
                         )
                     }
                 })}
+                {myPlants.length === 0 ? <Loading />
+                : total === 0 ? <li className={styles.nothing}>No tasks today!</li>
+                : ''
+                }
             </ul>
         </main>
     )
