@@ -10,11 +10,11 @@ import './assets/styles/main.scss'
 import { MantineProvider } from '@mantine/core';
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <BrowserRouter>
       <MantineProvider>
         {<App />}
       </MantineProvider>
     </BrowserRouter>
-  </StrictMode>,
+  // </StrictMode>,
 )

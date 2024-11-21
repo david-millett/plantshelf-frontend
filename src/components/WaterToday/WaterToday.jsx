@@ -44,7 +44,7 @@ const WaterToday = ({ myPlants, fetchMyPlants }) => {
                             <li key={plant.id}>
                                 <Link to={`/my_plants/${plant.id}/`}>
                                     <h3>{plant.nickname}</h3>
-                                    <img src={plant.species.image} />
+                                    <img src={plant.species.image} alt={plant.species.common_name} />
                                 </Link>
                                 <p>{plant.location.name}</p>
 

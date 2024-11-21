@@ -37,8 +37,6 @@ const PlantDetails = () => {
         fetchPlant()
     }, [plantId])
 
-console.log(plant)
-
 // Render error message
 if (errors) return <p className="error">{errors.errorMessage}</p>
 
@@ -65,11 +63,13 @@ if (!plant) return <p>Loading...</p>
                     <button onClick={open}>Add to shelf</button>
                 
                 </div>
-                <img src={plant.image} />
+                <img src={plant.image} alt={plant.common_name} />
             </div>
 
             <PlantInfo plant={plant} />
-            <p><Link to="/plants">Back</Link></p>
+
+            <p className={styles.backLink}><Link to="/plants">Back</Link></p>
+
         </main>
     )
 }

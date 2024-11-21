@@ -7,6 +7,7 @@ import styles from './Watering.module.scss'
 // Icons
 import { IconDroplet } from '@tabler/icons-react'
 import { IconDropletFilled } from "@tabler/icons-react"
+import { IconBucketDroplet } from "@tabler/icons-react"
 
 const Watering = ({ myPlant, fetchMyPlant }) => {
 
@@ -44,34 +45,37 @@ const Watering = ({ myPlant, fetchMyPlant }) => {
 
     return (
         <main className={styles.container}>
-            <div>
-                <h2>Watering</h2>
-                
-                {differenceInDays === 0
-                ? <button onClick={handleSubmit} disabled='true'>
-                    <IconDropletFilled size={15} />
-                    <p>Watered</p>
-                </button>
-                : <button onClick={handleSubmit}>
-                    <IconDroplet size={15} />
-                    <p>Water Me</p>
-                </button>
-                }
+            <div className={styles.sections}>
+                <IconBucketDroplet size={100} />
 
-                
-                <p>Last watered: 
-                    { !myPlant.last_watered ? "This plant hasn't been watered yet"
-                    : differenceInDays === 0 ? ' Today'
-                    : ` ${myPlant.last_watered}`
+                <div>
+                    <h2 className={styles.waterInfo}>Watering</h2>
+                    
+                    <p className={styles.waterInfo}>Last watered: 
+                        { !myPlant.last_watered ? "This plant hasn't been watered yet"
+                        : differenceInDays === 0 ? ' Today'
+                        : ` ${myPlant.last_watered}`
                     }
-                </p>
-                <p>Next watering: 
-                    { nextWatering === 0 ? ' Today!'
-                    : nextWatering === -1 ? ` Overdue by ${nextWatering * -1} day!`
-                    : nextWatering < 0 ? ` Overdue by ${nextWatering * -1} days!`
-                    : nextWatering === 1 ? ` Due in ${nextWatering} day`
-                    : ` Due in ${nextWatering} days`}
-                </p>
+                    </p>
+                    <p className={styles.waterInfo}>Next watering: 
+                        { nextWatering === 0 ? ' Today!'
+                        : nextWatering === -1 ? ` Overdue by ${nextWatering * -1} day!`
+                        : nextWatering < 0 ? ` Overdue by ${nextWatering * -1} days!`
+                        : nextWatering === 1 ? ` Due in ${nextWatering} day`
+                        : ` Due in ${nextWatering} days`}
+                    </p>
+
+                        {differenceInDays === 0
+                        ? <button className={styles.waterInfo} onClick={handleSubmit} disabled='true'>
+                            <IconDropletFilled size={15} />
+                            <p>Watered</p>
+                        </button>
+                        : <button className={styles.waterInfo} onClick={handleSubmit}>
+                            <IconDroplet size={15} />
+                            <p>Water Me</p>
+                        </button>
+                        }
+                </div>
             </div>
         </main>
     )

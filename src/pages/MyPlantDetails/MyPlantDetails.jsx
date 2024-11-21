@@ -61,29 +61,34 @@ const MyPlantDetails = () => {
     return (
         <main className={styles.container}>
 
-            <h1>{myPlant.nickname}</h1>
             
-            <p>{myPlant.species.common_name}</p>
-            <p className="species">{myPlant.species.genus} {myPlant.species.species}</p>
-            <p><strong>Location: </strong>{myPlant.location.name}</p>
-            <p><strong>Added: </strong>{myPlant.added_on}</p>
-            
-            <Modal
-                opened={opened}
-                onClose={close}
-                title={`Edit ${myPlant.nickname}`}
-                overlayProps={{backgroundOpacity: 0.55, blur: 2}}
-                centered
-            >
-                {<MyPlantForm close={close} fetchMyPlant={fetchMyPlant} plant={myPlant} />}
-            </Modal>
-            <button onClick={open}>Edit</button>
+            <div className={styles.hero}>
+                <div>
+                    <h1>{myPlant.nickname}</h1>
+                    <p>{myPlant.species.common_name}</p>
+                    <p className={styles.species}>{myPlant.species.genus} {myPlant.species.species}</p>
+                    <p className={styles.heroInfo}><strong>Location: </strong>{myPlant.location.name}</p>
+                    <p className={styles.heroInfo}><strong>Added: </strong>{myPlant.added_on}</p>
+                    
+                    <Modal
+                        opened={opened}
+                        onClose={close}
+                        title={`Edit ${myPlant.nickname}`}
+                        overlayProps={{backgroundOpacity: 0.55, blur: 2}}
+                        centered
+                    >
+                        {<MyPlantForm close={close} fetchMyPlant={fetchMyPlant} plant={myPlant} />}
+                    </Modal>
+                    <button onClick={open}>Edit</button>
 
-            <button onClick={handleDeleteMyPlant}>Delete</button>
+                    <button onClick={handleDeleteMyPlant}>Delete</button>
+                </div>
+                <img src={myPlant.species.image} alt={myPlant.species.common_name} />
+            </div>
 
             <Watering myPlant={myPlant} fetchMyPlant={fetchMyPlant} />
 
-            <h2>{myPlant.species.common_name} Information</h2>
+            <h2 className={styles.infoHeading}>{myPlant.species.common_name} Information</h2>
             <PlantInfo plant={myPlant.species} />
         </main>
     )
