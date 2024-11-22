@@ -49,7 +49,7 @@ const WaterToday = ({ myPlants, fetchMyPlants }) => {
                                     <h3>{plant.nickname}</h3>
                                     <img src={plant.species.image} alt={plant.species.common_name} />
                                 </Link>
-                                <p>{plant.location.name}</p>
+                                <p className={styles.location}>{plant.location.name}</p>
 
                                 {differenceInDays === 0
                                 ? <button id={plant.id} onClick={handleSubmit} disabled={true}>
@@ -61,7 +61,7 @@ const WaterToday = ({ myPlants, fetchMyPlants }) => {
                                     <p id={plant.id}>Water me</p>
                                 </button>
                                 }
-                                <p>
+                                <p className={styles.overdue}>
                                     {nextWatering === -1 ? ` ${nextWatering * -1} day overdue`
                                     : nextWatering < -1 ? ` ${nextWatering * -1} days overdue`
                                     : ''
