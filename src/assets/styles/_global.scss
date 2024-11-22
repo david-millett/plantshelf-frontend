@@ -33,12 +33,10 @@ button {
     color: white;
 }
 button:hover {
-    // border-color: #646cff;
     transform: scale(1.05);
 }
 button:focus,
 button:focus-visible {
-    // outline: 4px auto -webkit-focus-ring-color;
     opacity: 75%;
 }
 button:disabled {

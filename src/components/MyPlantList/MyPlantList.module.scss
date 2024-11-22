@@ -1,7 +1,6 @@
 @use 'src/assets/styles/variables' as *;
 
 .container {
-    // background-color: $light-brown;
     display: flex;
 
     ul {
@@ -19,14 +18,11 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        // border-radius: 10px;
         margin-left: 12px;
         margin-right: 12px;
     }
     
     li {
-        // color: white;
-        // margin-right: 0.5rem;
         background-color: $brown;
         text-align: center;
     }

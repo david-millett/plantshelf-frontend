@@ -10,10 +10,7 @@ import Landing from "./pages/Landing/Landing";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import PlantList from "./pages/PlantList/PlantList";
 import PlantDetails from "./pages/PlantDetails/PlantDetails";
-// import SignUp from "./pages/SignUp/SignUp";
-// import SignIn from "./pages/SignIn/SignIn";
 import MyPlantDetails from "./pages/MyPlantDetails/MyPlantDetails";
-// import MyPlantCreate from "./pages/MyPlantCreate/MyPlantCreate";
 
 const App = () => {
   const [user, setUser] = useState(getUser())

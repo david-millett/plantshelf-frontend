@@ -4,9 +4,6 @@ import { patchUpdate } from "../../services/myPlantService"
 // Styles
 import styles from './WaterToday.module.scss'
 
-// Components
-// import Loading from "../Loading/Loading"
-
 // Icons
 import { IconDroplet } from '@tabler/icons-react'
 import { IconDropletFilled } from "@tabler/icons-react"
@@ -74,10 +71,6 @@ const WaterToday = ({ myPlants, fetchMyPlants }) => {
                         )
                     }
                 })}
-                {/* {myPlants.length === 0 ? <Loading />
-                : total === 0 ? <li className={styles.nothing}>No tasks today!</li>
-                : ''
-                } */}
                 {total === 0 ? <li className={styles.nothing}>No tasks today!</li> : ''}
             </ul>
         </main>

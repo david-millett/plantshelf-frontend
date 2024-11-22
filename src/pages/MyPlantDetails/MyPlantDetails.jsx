@@ -51,8 +51,6 @@ const MyPlantDetails = () => {
         fetchMyPlant()
     }, [myPlantId, fetchMyPlant])
 
-    console.log(myPlant)
-
     // Render error message
     if (errors) return <p className="error">{errors.errorMessage}</p>
 
