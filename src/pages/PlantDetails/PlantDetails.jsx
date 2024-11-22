@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 
+// Mantine modal menu
+import { useDisclosure } from '@mantine/hooks';
+import { Modal } from '@mantine/core';
+
 // Services
 import { show } from "../../services/plantService"
 
@@ -9,11 +13,14 @@ import styles from './PlantDetails.module.scss'
 
 // * Components
 import PlantInfo from "../../components/PlantInfo/PlantInfo"
+import MyPlantForm from "../../components/MyPlantForm/MyPlantForm";
+import Loading from "../../components/Loading/Loading";
 
-const PlantDetails = () => {
+const PlantDetails = ({ user }) => {
 
     const [plant, setPlant] = useState(null)
     const [errors, setErrors] = useState(null)
+    const [opened, { open, close }] = useDisclosure(false);
 
     // Location variables
     const { plantId } = useParams()
@@ -31,13 +38,11 @@ const PlantDetails = () => {
         fetchPlant()
     }, [plantId])
 
-console.log(plant)
-
 // Render error message
 if (errors) return <p className="error">{errors.errorMessage}</p>
 
 // Render loading message
-if (!plant) return <p>Loading...</p>
+if (!plant) return <Loading />
 
     return (
         <main className={styles.container}>
@@ -46,13 +51,26 @@ if (!plant) return <p>Loading...</p>
                 <div>
                     <h1>{plant.common_name}</h1>
                     <p className="species">{plant.genus} {plant.species}</p>
-                    <button>Add to shelf</button>
+                    
+                    <Modal
+                        opened={opened}
+                        onClose={close}
+                        title={`Add new ${plant.common_name}`}
+                        overlayProps={{backgroundOpacity: 0.55, blur: 2}}
+                        centered
+                    >
+                        {<MyPlantForm close={close} />}
+                    </Modal>
+                    <button onClick={open} disabled={user ? false : true}>{user ? 'Add to shelf' : 'Sign in to add'}</button>
+                
                 </div>
-                <img src="https://dummyimage.com/300/ffffff/fff.png" />
+                <img src={plant.image} alt={plant.common_name} />
             </div>
 
             <PlantInfo plant={plant} />
-            <p><Link to="/plants">Back</Link></p>
+
+            <p className={styles.backLink}><Link to="/plants">Back</Link></p>
+
         </main>
     )
 }

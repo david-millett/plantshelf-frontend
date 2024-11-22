@@ -2,7 +2,10 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { signup } from "../../services/userService"
 
-const SignUp = ({ setUser }) => {
+// Styling
+import styles from '../../components/MyPlantForm/MyPlantForm.module.scss'
+
+const SignUp = ({ setUser, close }) => {
 
     // State
     const [formData, setFormData] = useState({
@@ -25,6 +28,7 @@ const SignUp = ({ setUser }) => {
         try {
             const { user } = await signup(formData) // sign in
             setUser(user) // set user to state
+            close()
             navigate('/') // navigate to dashboard
         } catch (error) {
             console.log(error)
@@ -32,8 +36,8 @@ const SignUp = ({ setUser }) => {
     }
 
     return (
-        <main>
-            <h1>Sign up</h1>
+        <main className={styles.container}>
+            {/* <h1>Sign up</h1> */}
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>
@@ -66,7 +70,7 @@ const SignUp = ({ setUser }) => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="password_confirmation">Confirm Password:</label>
+                    <label htmlFor="password_confirmation">Confirm password:</label>
                     <input
                         type="password"
                         id="password_confirmation"
@@ -75,12 +79,12 @@ const SignUp = ({ setUser }) => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <button>Sign Up</button>
-                    <Link to="/">
-                        <button>Cancel</button>
-                    </Link>
-                </div>
+
+                <button>Sign up</button>
+                <Link to="/">
+                    <button>Cancel</button>
+                </Link>
+
             </form>
         </main>
     )

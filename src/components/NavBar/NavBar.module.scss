@@ -1,4 +1,33 @@
+@use 'src/assets/styles/variables' as *;
+
 .container {
     display: flex;
-    margin-bottom: 100px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 1rem 0;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: $background;
+}
+
+.logo {
+    display: flex;
+    font-size: 1.5rem;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.menuBlock {
+    display: flex;
+    gap: 0.5rem;
+}
+
+@media(max-width:425px){
+    .container {
+        a {
+            font-size: 0.8rem;
+        }
+    }
 }

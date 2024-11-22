@@ -26,3 +26,8 @@ export const deleteMyPlant = (myPlantId) => {
 export const update = (myPlantId, formData) => {
     return axios.put(`${BASE_URL}${myPlantId}/`, formData)
 }
+
+// * Patch Update
+export const patchUpdate = (myPlantId, formData) => {
+    return axios.patch(`${BASE_URL}${myPlantId}/`, formData)
+}

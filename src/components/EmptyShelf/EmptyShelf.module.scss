@@ -1,0 +1,24 @@
+@use 'src/assets/styles/variables' as *;
+
+.emptyShelfBack {
+    width: 124px;
+    height: 136px;
+    background-color: $brown;
+}
+
+.emptyShelfShadow {
+    height: 0.4rem;
+    width: 124px;
+    background-color: $dark-brown;
+}
+
+.emptyShelfFloor {
+    height: 9px;
+    width: 124px;
+    background-color: $light-brown;
+}
+
+.emptyShelfFloorShadow {
+    height: 0.4rem;
+    background-color: $lighter-brown;
+}

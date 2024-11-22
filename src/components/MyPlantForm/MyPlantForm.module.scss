@@ -1,0 +1,27 @@
+@use 'src/assets/styles/variables' as *;
+
+.container {
+    color: $background;
+    margin: 1.5rem;
+    form {
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            background-color: white;
+            color: $background;
+            margin-bottom: 1.5rem;
+            border: 2px solid $background;
+            padding: 0.2rem 0.5rem;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    button {
+        margin-right: 0.8rem;
+        background-color: $background;
+    }
+}
+

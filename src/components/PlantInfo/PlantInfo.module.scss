@@ -1,8 +1,37 @@
 @use 'src/assets/styles/variables' as *;
 
 .container {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+
     div {
         margin: 10px;
-        background-color: $background-dark;
     }
+
+}
+
+.careDetailsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.careDetails {
+    background-color: $background-dark;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 350px;
+    height: 200px;
+    padding: 2rem 1rem 1rem 2rem;
+    border-radius: 30px 0 30px 0;
+}
+
+.bio {
+    margin: 1rem 2rem;
 }

@@ -1,0 +1,31 @@
+@use 'src/assets/styles/variables' as *;
+
+.container {
+    text-align: center;
+    background-color: $background-dark;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    img {
+        width: 120px;
+        height: 120px;
+    }
+
+    button {
+        display: flex;
+        gap: 0.3rem;
+        align-items: center;
+    }
+}
+
+.nothing {
+    margin: 2rem;
+}

@@ -18,11 +18,7 @@ export const getUser = () => {
     if (!token) return null
 
     // Extract payload
-    const payload = JSON.parse( // convert JSON string into JS Object
-    atob( // Decode B64 encoded string
-      token.split('.')[1] // Get the middle string of the JSON Web Token (the payload string)
-    )  
-)
+    const payload = JSON.parse(atob(token.split('.')[1]))
 
     // Return the payload
     return payload
