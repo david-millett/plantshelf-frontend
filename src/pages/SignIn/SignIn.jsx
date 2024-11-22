@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { signin } from "../../services/userService"
 
 // Styling
@@ -58,9 +58,7 @@ const SignIn = ({ setUser, close }) => {
                     />
                 </div>
                 <button>Sign in</button>
-                <Link to="/">
-                    <button>Cancel</button>
-                </Link>
+                <button onClick={close}>Cancel</button>
             </form>
         </main>
     )

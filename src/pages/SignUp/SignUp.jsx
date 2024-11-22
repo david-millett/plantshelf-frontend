@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { signup } from "../../services/userService"
 
 // Styling
@@ -81,9 +81,9 @@ const SignUp = ({ setUser, close }) => {
                 </div>
 
                 <button>Sign up</button>
-                <Link to="/">
-                    <button>Cancel</button>
-                </Link>
+                
+                <button onClick={close}>Cancel</button>
+                
 
             </form>
         </main>
