@@ -1,6 +1,6 @@
 # plantshelf 🌱
 
-Photo
+![plantshelf](./src/assets/screenshots/plants-index.png)
 
 ## Description
 
